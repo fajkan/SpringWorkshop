@@ -11,21 +11,22 @@ import org.springframework.stereotype.Component;
 @Component
 public class ScannerInputService implements UserInputService{
 
-    @Bean
-    public Scanner scannerObj() {
-        Scanner scanObj = new Scanner(System.in);
-        return scanObj;
+
+// inject scanner bean
+    Scanner scanner;
+
+    @Autowired
+    public void setScanner(Scanner scanner) {
+        this.scanner = scanner;
     }
-
-
 
     @Override
     public String getString() {
-        return null;
+        return scanner.next();
     }
 
     @Override
     public int getInt() {
-        return 0;
+        return scanner.nextInt();
     }
 }
